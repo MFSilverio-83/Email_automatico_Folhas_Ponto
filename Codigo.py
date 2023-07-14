@@ -45,7 +45,7 @@ for linha in linhas.iter_rows(values_only=True):
     # Crie uma nova mensagem de e-mail
     message = EmailMessage()
     message["Subject"] = "Folhas de ponto"
-    message["From"] = "prontecsultecnica@uol.com.br"
+    message["From"] = "e-maildoresponsavel"
     message["To"] = email
 
     # Anexe o arquivo PDF ao e-mail
@@ -53,9 +53,9 @@ for linha in linhas.iter_rows(values_only=True):
         message.add_attachment(pdf_file.read(), maintype="application", subtype="pdf", filename=espelho_ponto)
 
     # Envie o e-mail
-    with smtplib.SMTP("smtps.uol.com.br", 587) as smtp_server:
+    with smtplib.SMTP("provedor.e-mail", 587) as smtp_server:
         smtp_server.starttls()
-        smtp_server.login("prontecsultecnica@uol.com.br", "prontec1")
+        smtp_server.login("emaildoresponsavel", "senha_email")
         smtp_server.send_message(message)
 
 
